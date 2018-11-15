@@ -1,18 +1,18 @@
-// Copyright 2017 The go-ethereum Authors
-// This file is part of the go-ethereum library.
+// Copyright 2017 The go-amoeba Authors
+// This file is part of the go-amoeba library.
 //
-// The go-ethereum library is free software: you can redistribute it and/or modify
+// The go-amoeba library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// The go-ethereum library is distributed in the hope that it will be useful,
+// The go-amoeba library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
+// along with the go-amoeba library. If not, see <http://www.gnu.org/licenses/>.
 
 package eth
 
@@ -26,19 +26,19 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/eth/tracers"
-	"github.com/ethereum/go-ethereum/internal/ethapi"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/rpc"
-	"github.com/ethereum/go-ethereum/trie"
+	"github.com/AmoebaTeam/go-amoeba/common"
+	"github.com/AmoebaTeam/go-amoeba/common/hexutil"
+	"github.com/AmoebaTeam/go-amoeba/core"
+	"github.com/AmoebaTeam/go-amoeba/core/rawdb"
+	"github.com/AmoebaTeam/go-amoeba/core/state"
+	"github.com/AmoebaTeam/go-amoeba/core/types"
+	"github.com/AmoebaTeam/go-amoeba/core/vm"
+	"github.com/AmoebaTeam/go-amoeba/eth/tracers"
+	"github.com/AmoebaTeam/go-amoeba/internal/ethapi"
+	"github.com/AmoebaTeam/go-amoeba/log"
+	"github.com/AmoebaTeam/go-amoeba/rlp"
+	"github.com/AmoebaTeam/go-amoeba/rpc"
+	"github.com/AmoebaTeam/go-amoeba/trie"
 )
 
 const (

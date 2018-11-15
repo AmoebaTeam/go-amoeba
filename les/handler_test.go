@@ -1,18 +1,18 @@
-// Copyright 2016 The go-ethereum Authors
-// This file is part of the go-ethereum library.
+// Copyright 2016 The go-amoeba Authors
+// This file is part of the go-amoeba library.
 //
-// The go-ethereum library is free software: you can redistribute it and/or modify
+// The go-amoeba library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// The go-ethereum library is distributed in the hope that it will be useful,
+// The go-amoeba library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
+// along with the go-amoeba library. If not, see <http://www.gnu.org/licenses/>.
 
 package les
 
@@ -23,19 +23,19 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/consensus/ethash"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/eth/downloader"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/light"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/trie"
+	"github.com/AmoebaTeam/go-amoeba/common"
+	"github.com/AmoebaTeam/go-amoeba/consensus/ethash"
+	"github.com/AmoebaTeam/go-amoeba/core"
+	"github.com/AmoebaTeam/go-amoeba/core/rawdb"
+	"github.com/AmoebaTeam/go-amoeba/core/types"
+	"github.com/AmoebaTeam/go-amoeba/crypto"
+	"github.com/AmoebaTeam/go-amoeba/eth/downloader"
+	"github.com/AmoebaTeam/go-amoeba/ethdb"
+	"github.com/AmoebaTeam/go-amoeba/light"
+	"github.com/AmoebaTeam/go-amoeba/p2p"
+	"github.com/AmoebaTeam/go-amoeba/params"
+	"github.com/AmoebaTeam/go-amoeba/rlp"
+	"github.com/AmoebaTeam/go-amoeba/trie"
 )
 
 func expectResponse(r p2p.MsgReader, msgcode, reqID, bv uint64, data interface{}) error {

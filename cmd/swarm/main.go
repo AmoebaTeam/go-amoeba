@@ -1,18 +1,18 @@
-// Copyright 2016 The go-ethereum Authors
-// This file is part of go-ethereum.
+// Copyright 2016 The go-amoeba Authors
+// This file is part of go-amoeba.
 //
-// go-ethereum is free software: you can redistribute it and/or modify
+// go-amoeba is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// go-ethereum is distributed in the hope that it will be useful,
+// go-amoeba is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with go-ethereum. If not, see <http://www.gnu.org/licenses/>.
+// along with go-amoeba. If not, see <http://www.gnu.org/licenses/>.
 
 package main
 
@@ -29,21 +29,21 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/accounts/keystore"
-	"github.com/ethereum/go-ethereum/cmd/utils"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/console"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/internal/debug"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/node"
-	"github.com/ethereum/go-ethereum/p2p/enode"
-	"github.com/ethereum/go-ethereum/swarm"
-	bzzapi "github.com/ethereum/go-ethereum/swarm/api"
-	swarmmetrics "github.com/ethereum/go-ethereum/swarm/metrics"
-	"github.com/ethereum/go-ethereum/swarm/tracing"
-	sv "github.com/ethereum/go-ethereum/swarm/version"
+	"github.com/AmoebaTeam/go-amoeba/accounts"
+	"github.com/AmoebaTeam/go-amoeba/accounts/keystore"
+	"github.com/AmoebaTeam/go-amoeba/cmd/utils"
+	"github.com/AmoebaTeam/go-amoeba/common"
+	"github.com/AmoebaTeam/go-amoeba/console"
+	"github.com/AmoebaTeam/go-amoeba/crypto"
+	"github.com/AmoebaTeam/go-amoeba/internal/debug"
+	"github.com/AmoebaTeam/go-amoeba/log"
+	"github.com/AmoebaTeam/go-amoeba/node"
+	"github.com/AmoebaTeam/go-amoeba/p2p/enode"
+	"github.com/AmoebaTeam/go-amoeba/swarm"
+	bzzapi "github.com/AmoebaTeam/go-amoeba/swarm/api"
+	swarmmetrics "github.com/AmoebaTeam/go-amoeba/swarm/metrics"
+	"github.com/AmoebaTeam/go-amoeba/swarm/tracing"
+	sv "github.com/AmoebaTeam/go-amoeba/swarm/version"
 
 	"gopkg.in/urfave/cli.v1"
 )
@@ -103,7 +103,7 @@ var app = utils.NewApp("", "Ethereum Swarm")
 func init() {
 	app.Action = bzzd
 	app.Version = sv.ArchiveVersion(gitCommit)
-	app.Copyright = "Copyright 2013-2016 The go-ethereum Authors"
+	app.Copyright = "Copyright 2013-2016 The go-amoeba Authors"
 	app.Commands = []cli.Command{
 		{
 			Action:             version,

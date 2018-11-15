@@ -1,18 +1,18 @@
-// Copyright 2017 The go-ethereum Authors
-// This file is part of the go-ethereum library.
+// Copyright 2017 The go-amoeba Authors
+// This file is part of the go-amoeba library.
 //
-// The go-ethereum library is free software: you can redistribute it and/or modify
+// The go-amoeba library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// The go-ethereum library is distributed in the hope that it will be useful,
+// The go-amoeba library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
+// along with the go-amoeba library. If not, see <http://www.gnu.org/licenses/>.
 
 /*
 Package protocols is an extension to p2p. It offers a user friendly simple way to define
@@ -38,12 +38,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/metrics"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/swarm/spancontext"
-	"github.com/ethereum/go-ethereum/swarm/tracing"
+	"github.com/AmoebaTeam/go-amoeba/log"
+	"github.com/AmoebaTeam/go-amoeba/metrics"
+	"github.com/AmoebaTeam/go-amoeba/p2p"
+	"github.com/AmoebaTeam/go-amoeba/rlp"
+	"github.com/AmoebaTeam/go-amoeba/swarm/spancontext"
+	"github.com/AmoebaTeam/go-amoeba/swarm/tracing"
 	opentracing "github.com/opentracing/opentracing-go"
 )
 

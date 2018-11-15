@@ -6,12 +6,12 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/consensus/ethash"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/eth/downloader"
-	"github.com/ethereum/go-ethereum/eth/gasprice"
+	"github.com/AmoebaTeam/go-amoeba/common"
+	"github.com/AmoebaTeam/go-amoeba/common/hexutil"
+	"github.com/AmoebaTeam/go-amoeba/consensus/ethash"
+	"github.com/AmoebaTeam/go-amoeba/core"
+	"github.com/AmoebaTeam/go-amoeba/eth/downloader"
+	"github.com/AmoebaTeam/go-amoeba/eth/gasprice"
 )
 
 var _ = (*configMarshaling)(nil)

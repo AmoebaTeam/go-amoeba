@@ -1,18 +1,18 @@
-// Copyright 2015 The go-ethereum Authors
-// This file is part of the go-ethereum library.
+// Copyright 2015 The go-amoeba Authors
+// This file is part of the go-amoeba library.
 //
-// The go-ethereum library is free software: you can redistribute it and/or modify
+// The go-amoeba library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// The go-ethereum library is distributed in the hope that it will be useful,
+// The go-amoeba library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
+// along with the go-amoeba library. If not, see <http://www.gnu.org/licenses/>.
 
 // Package downloader contains the manual full chain synchronisation.
 package downloader
@@ -25,15 +25,15 @@ import (
 	"sync/atomic"
 	"time"
 
-	ethereum "github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/metrics"
-	"github.com/ethereum/go-ethereum/params"
+	ethereum "github.com/AmoebaTeam/go-amoeba"
+	"github.com/AmoebaTeam/go-amoeba/common"
+	"github.com/AmoebaTeam/go-amoeba/core/rawdb"
+	"github.com/AmoebaTeam/go-amoeba/core/types"
+	"github.com/AmoebaTeam/go-amoeba/ethdb"
+	"github.com/AmoebaTeam/go-amoeba/event"
+	"github.com/AmoebaTeam/go-amoeba/log"
+	"github.com/AmoebaTeam/go-amoeba/metrics"
+	"github.com/AmoebaTeam/go-amoeba/params"
 )
 
 var (

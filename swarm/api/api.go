@@ -1,18 +1,18 @@
-// Copyright 2016 The go-ethereum Authors
-// This file is part of the go-ethereum library.
+// Copyright 2016 The go-amoeba Authors
+// This file is part of the go-amoeba library.
 //
-// The go-ethereum library is free software: you can redistribute it and/or modify
+// The go-amoeba library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// The go-ethereum library is distributed in the hope that it will be useful,
+// The go-amoeba library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
+// along with the go-amoeba library. If not, see <http://www.gnu.org/licenses/>.
 
 package api
 
@@ -37,16 +37,16 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/contracts/ens"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/metrics"
-	"github.com/ethereum/go-ethereum/swarm/log"
-	"github.com/ethereum/go-ethereum/swarm/multihash"
-	"github.com/ethereum/go-ethereum/swarm/spancontext"
-	"github.com/ethereum/go-ethereum/swarm/storage"
-	"github.com/ethereum/go-ethereum/swarm/storage/feed"
-	"github.com/ethereum/go-ethereum/swarm/storage/feed/lookup"
+	"github.com/AmoebaTeam/go-amoeba/common"
+	"github.com/AmoebaTeam/go-amoeba/contracts/ens"
+	"github.com/AmoebaTeam/go-amoeba/core/types"
+	"github.com/AmoebaTeam/go-amoeba/metrics"
+	"github.com/AmoebaTeam/go-amoeba/swarm/log"
+	"github.com/AmoebaTeam/go-amoeba/swarm/multihash"
+	"github.com/AmoebaTeam/go-amoeba/swarm/spancontext"
+	"github.com/AmoebaTeam/go-amoeba/swarm/storage"
+	"github.com/AmoebaTeam/go-amoeba/swarm/storage/feed"
+	"github.com/AmoebaTeam/go-amoeba/swarm/storage/feed/lookup"
 
 	opentracing "github.com/opentracing/opentracing-go"
 )

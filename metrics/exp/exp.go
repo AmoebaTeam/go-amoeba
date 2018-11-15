@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/ethereum/go-ethereum/metrics"
+	"github.com/AmoebaTeam/go-amoeba/metrics"
 )
 
 type exp struct {

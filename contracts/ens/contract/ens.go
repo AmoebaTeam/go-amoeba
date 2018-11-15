@@ -6,12 +6,12 @@ package contract
 import (
 	"strings"
 
-	ethereum "github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/accounts/abi"
-	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/event"
+	ethereum "github.com/AmoebaTeam/go-amoeba"
+	"github.com/AmoebaTeam/go-amoeba/accounts/abi"
+	"github.com/AmoebaTeam/go-amoeba/accounts/abi/bind"
+	"github.com/AmoebaTeam/go-amoeba/common"
+	"github.com/AmoebaTeam/go-amoeba/core/types"
+	"github.com/AmoebaTeam/go-amoeba/event"
 )
 
 // ENSABI is the input ABI used to generate the binding from.

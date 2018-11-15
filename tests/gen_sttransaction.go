@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/common/math"
+	"github.com/AmoebaTeam/go-amoeba/common/hexutil"
+	"github.com/AmoebaTeam/go-amoeba/common/math"
 )
 
 var _ = (*stTransactionMarshaling)(nil)

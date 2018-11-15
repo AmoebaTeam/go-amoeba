@@ -5,12 +5,12 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/swarm/log"
-	"github.com/ethereum/go-ethereum/swarm/pss"
+	"github.com/AmoebaTeam/go-amoeba/common/hexutil"
+	"github.com/AmoebaTeam/go-amoeba/crypto"
+	"github.com/AmoebaTeam/go-amoeba/p2p"
+	"github.com/AmoebaTeam/go-amoeba/rlp"
+	"github.com/AmoebaTeam/go-amoeba/swarm/log"
+	"github.com/AmoebaTeam/go-amoeba/swarm/pss"
 )
 
 const (

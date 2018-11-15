@@ -1,18 +1,18 @@
-// Copyright 2017 The go-ethereum Authors
-// This file is part of the go-ethereum library.
+// Copyright 2017 The go-amoeba Authors
+// This file is part of the go-amoeba library.
 //
-// The go-ethereum library is free software: you can redistribute it and/or modify
+// The go-amoeba library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// The go-ethereum library is distributed in the hope that it will be useful,
+// The go-amoeba library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
+// along with the go-amoeba library. If not, see <http://www.gnu.org/licenses/>.
 
 package ethash
 
@@ -25,24 +25,34 @@ import (
 	"time"
 
 	mapset "github.com/deckarep/golang-set"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/ethereum/go-ethereum/consensus"
-	"github.com/ethereum/go-ethereum/consensus/misc"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/crypto/sha3"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/AmoebaTeam/go-amoeba/common"
+	"github.com/AmoebaTeam/go-amoeba/common/math"
+	"github.com/AmoebaTeam/go-amoeba/consensus"
+	"github.com/AmoebaTeam/go-amoeba/consensus/misc"
+	"github.com/AmoebaTeam/go-amoeba/core/state"
+	"github.com/AmoebaTeam/go-amoeba/core/types"
+	"github.com/AmoebaTeam/go-amoeba/crypto/sha3"
+	"github.com/AmoebaTeam/go-amoeba/params"
+	"github.com/AmoebaTeam/go-amoeba/rlp"
 )
 
 // Ethash proof-of-work protocol constants.
 var (
-	FrontierBlockReward       = big.NewInt(5e+18) // Block reward in wei for successfully mining a block
-	ByzantiumBlockReward      = big.NewInt(3e+18) // Block reward in wei for successfully mining a block upward from Byzantium
-	ConstantinopleBlockReward = big.NewInt(2e+18) // Block reward in wei for successfully mining a block upward from Constantinople
+    BlockReward0       = big.NewInt(8e+18)
+    BlockReward1       = big.NewInt(6e+18)
+    BlockReward2       = big.NewInt(5e+18)
+    BlockReward3       = big.NewInt(2e+18)
+    BlockReward4       = big.NewInt(1e+18)
+
 	maxUncles                 = 2                 // Maximum number of uncles allowed in a single block
 	allowedFutureBlockTime    = 15 * time.Second  // Max time from current time allowed for blocks, before they're considered future blocks
+
+	RewardSwitchBlockEra0       *big.Int = big.NewInt(42000)
+	RewardSwitchBlockEra1	    *big.Int = big.NewInt(240000)
+	RewardSwitchBlockEra2       *big.Int = big.NewInt(2500000)
+	RewardSwitchBlockEra3       *big.Int = big.NewInt(5000000)
+//	RewardSwitchBlockEra4       *big.Int = big.NewInt(10000000)
+
 
 	// calcDifficultyConstantinople is the difficulty adjustment algorithm for Constantinople.
 	// It returns the difficulty that a new block should have when created at time given the
@@ -313,14 +323,14 @@ func (ethash *Ethash) CalcDifficulty(chain consensus.ChainReader, time uint64, p
 func CalcDifficulty(config *params.ChainConfig, time uint64, parent *types.Header) *big.Int {
 	next := new(big.Int).Add(parent.Number, big1)
 	switch {
-	case config.IsConstantinople(next):
-		return calcDifficultyConstantinople(time, parent)
-	case config.IsByzantium(next):
-		return calcDifficultyByzantium(time, parent)
+//	case config.IsConstantinople(next):
+//		return calcDifficultyConstantinople(time, parent)
+//	case config.IsByzantium(next):
+//		return calcDifficultyByzantium(time, parent)
 	case config.IsHomestead(next):
 		return calcDifficultyHomestead(time, parent)
 	default:
-		return calcDifficultyFrontier(time, parent)
+		return calcDifficultyHomestead(time, parent)
 	}
 }
 
@@ -342,7 +352,7 @@ func makeDifficultyCalculator(bombDelay *big.Int) func(time uint64, parent *type
 	// the block number. Thus we remove one from the delay given
 	bombDelayFromParent := new(big.Int).Sub(bombDelay, big1)
 	return func(time uint64, parent *types.Header) *big.Int {
-		// https://github.com/ethereum/EIPs/issues/100.
+		// https://github.com/AmoebaTeam/EIPs/issues/100.
 		// algorithm:
 		// diff = (parent_diff +
 		//         (parent_diff / 2048 * max((2 if len(parent.uncles) else 1) - ((timestamp - parent.timestamp) // 9), -99))
@@ -401,11 +411,11 @@ func makeDifficultyCalculator(bombDelay *big.Int) func(time uint64, parent *type
 // the difficulty that a new block should have when created at time given the
 // parent block's time and difficulty. The calculation uses the Homestead rules.
 func calcDifficultyHomestead(time uint64, parent *types.Header) *big.Int {
-	// https://github.com/ethereum/EIPs/blob/master/EIPS/eip-2.md
+	// https://github.com/AmoebaTeam/EIPs/blob/master/EIPS/eip-2.md
 	// algorithm:
 	// diff = (parent_diff +
 	//         (parent_diff / 2048 * max(1 - (block_timestamp - parent_timestamp) // 10, -99))
-	//        ) + 2^(periodCount - 2)
+	//        )
 
 	bigTime := new(big.Int).SetUint64(time)
 	bigParentTime := new(big.Int).Set(parent.Time)
@@ -415,6 +425,7 @@ func calcDifficultyHomestead(time uint64, parent *types.Header) *big.Int {
 	y := new(big.Int)
 
 	// 1 - (block_timestamp - parent_timestamp) // 10
+	// 1 - 2
 	x.Sub(bigTime, bigParentTime)
 	x.Div(x, big10)
 	x.Sub(big1, x)
@@ -433,16 +444,16 @@ func calcDifficultyHomestead(time uint64, parent *types.Header) *big.Int {
 		x.Set(params.MinimumDifficulty)
 	}
 	// for the exponential factor
-	periodCount := new(big.Int).Add(parent.Number, big1)
-	periodCount.Div(periodCount, expDiffPeriod)
+//	periodCount := new(big.Int).Add(parent.Number, big1)
+//	periodCount.Div(periodCount, expDiffPeriod)
 
 	// the exponential factor, commonly referred to as "the bomb"
 	// diff = diff + 2^(periodCount - 2)
-	if periodCount.Cmp(big1) > 0 {
-		y.Sub(periodCount, big2)
-		y.Exp(big2, y, nil)
-		x.Add(x, y)
-	}
+//	if periodCount.Cmp(big1) > 0 {
+//		y.Sub(periodCount, big2)
+//		y.Exp(big2, y, nil)
+//		x.Add(x, y)
+//	}
 	return x
 }
 
@@ -607,14 +618,41 @@ var (
 // included uncles. The coinbase of each uncle block is also rewarded.
 func accumulateRewards(config *params.ChainConfig, state *state.StateDB, header *types.Header, uncles []*types.Header) {
 	// Select the correct block reward based on chain progression
-	blockReward := FrontierBlockReward
-	if config.IsByzantium(header.Number) {
-		blockReward = ByzantiumBlockReward
+    br0 := BlockReward0
+    br1 := BlockReward1
+    br2 := BlockReward2
+    br3 := BlockReward3
+    br4 := BlockReward4
+
+	rsbe0 := RewardSwitchBlockEra0
+	rsbe1 := RewardSwitchBlockEra1
+	rsbe2 := RewardSwitchBlockEra2
+	rsbe3 := RewardSwitchBlockEra3
+
+	blockReward := br0
+
+	if (header.Number.Cmp(rsbe3) == 1) {
+    	blockReward = br4
+	} else if (header.Number.Cmp(rsbe2) == 1) {
+    	blockReward = br3
+	} else if (header.Number.Cmp(rsbe1) == 1) {
+    	blockReward = br2
+	} else if (header.Number.Cmp(rsbe0) == 1) {
+    	blockReward = br1
+    } else {
+	    blockReward = br0
+
 	}
-	if config.IsConstantinople(header.Number) {
-		blockReward = ConstantinopleBlockReward
-	}
+//	blockReward := FrontierBlockReward
+//	blockReward := BlockReward4
+//	if config.IsByzantium(header.Number) {
+//		blockReward = ByzantiumBlockReward
+//	}
+//	if config.IsConstantinople(header.Number) {
+//		blockReward = ConstantinopleBlockReward
+//	}
 	// Accumulate the rewards for the miner and any included uncles
+//	fmt.Println("jiangli>>>>>>>>>>",blockReward ,"kuai haoma shi duoshao >>>>>>>>>>>>>>>>>>>>>",header.Number)
 	reward := new(big.Int).Set(blockReward)
 	r := new(big.Int)
 	for _, uncle := range uncles {
