@@ -157,6 +157,8 @@ func SetupGenesisBlock(db ethdb.Database, genesis *Genesis) (*params.ChainConfig
 
 	// Just commit the new block if there is no stored genesis block.
 	stored := rawdb.ReadCanonicalHash(db, 0)
+    fmt.Println(stored.String())
+    fmt.Println("=====================>")
 	if (stored == common.Hash{}) {
 		if genesis == nil {
 			log.Info("Writing default main-net genesis block")
@@ -302,9 +304,9 @@ func DefaultGenesisBlock() *Genesis {
 	return &Genesis{
 		Config:     params.MainnetChainConfig,
 		Nonce:      66,
-		ExtraData:  hexutil.MustDecode("0x11bbe8db4e347b4e8c937c1c8370e4b5ed33adb3db69cbdb7a38e1e50b1b82fa"),
+        ExtraData:  hexutil.MustDecode("0x496620796f752068617665206e6f20637269746963732c20796f752077696c6c206c696b656c792068617665206e6f20737563636573732e207e204d616c636f6c6d20532e20466f72626573"),
 		GasLimit:   5000,
-		Difficulty: big.NewInt(17179869184),
+		Difficulty: big.NewInt(6000000),
 		Alloc:      decodePrealloc(mainnetAllocData),
 	}
 }

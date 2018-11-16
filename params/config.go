@@ -25,7 +25,7 @@ import (
 
 // Genesis hashes to enforce below configs on.
 var (
-	MainnetGenesisHash = common.HexToHash("0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3")
+	MainnetGenesisHash = common.HexToHash("0x49e2dcbe32dbdec516431acbbd2aba72e185bbc8cfaf04b52ca785e3859d2a70")
 	TestnetGenesisHash = common.HexToHash("0x41941023680923e0fe4d74a34bdac8141f2540e3ae90623718e47d66d1ca4a2d")
 	RinkebyGenesisHash = common.HexToHash("0x6341fd3daf94b748c72ced5a5b26028f2474f5f00d824504e4fa37a75767e177")
 )
@@ -33,15 +33,15 @@ var (
 var (
 	// MainnetChainConfig is the chain parameters to run a node on the main network.
 	MainnetChainConfig = &ChainConfig{
-		ChainID:             big.NewInt(123456),
-		HomesteadBlock:      big.NewInt(1),
-		DAOForkBlock:        big.NewInt(1),
+		ChainID:             big.NewInt(41825),
+		HomesteadBlock:      big.NewInt(0),
+		DAOForkBlock:        big.NewInt(0),
 		DAOForkSupport:      true,
-		EIP150Block:         big.NewInt(1),
-		EIP150Hash:          common.HexToHash("0x2086799aeebeae135c246c65021c82b4e15a2c451340993aacfd2751886514f0"),
-		EIP155Block:         big.NewInt(1),
-		EIP158Block:         big.NewInt(1),
-		ByzantiumBlock:      big.NewInt(1),
+		EIP150Block:         big.NewInt(0),
+		EIP150Hash:          common.HexToHash("0x49e2dcbe32dbdec516431acbbd2aba72e185bbc8cfaf04b52ca785e3859d2a70"),
+		EIP155Block:         big.NewInt(0),
+		EIP158Block:         big.NewInt(0),
+		ByzantiumBlock:      big.NewInt(0),
 		ConstantinopleBlock: nil,
 		Ethash:              new(EthashConfig),
 	}
