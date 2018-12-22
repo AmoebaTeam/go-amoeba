@@ -13,3 +13,4 @@ RUN apk add --no-cache ca-certificates
 COPY --from=builder /go-amoeba/build/bin/geth /usr/local/bin/
 
 EXPOSE 8396 8397 21394 21394/udp
+ENTRYPOINT ["geth"]

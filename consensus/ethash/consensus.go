@@ -652,7 +652,6 @@ func accumulateRewards(config *params.ChainConfig, state *state.StateDB, header 
 //		blockReward = ConstantinopleBlockReward
 //	}
 	// Accumulate the rewards for the miner and any included uncles
-//	fmt.Println("jiangli>>>>>>>>>>",blockReward ,"kuai haoma shi duoshao >>>>>>>>>>>>>>>>>>>>>",header.Number)
 	reward := new(big.Int).Set(blockReward)
 	r := new(big.Int)
 	for _, uncle := range uncles {
